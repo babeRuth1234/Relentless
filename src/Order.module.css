@@ -1,0 +1,380 @@
+*{
+    font-family: 'League Spartan';
+    /* border: solid 1px blue; */
+}
+
+:root {
+    /* Font */
+    --font-family: 'League Spartan', sans-serif;
+    --font-size: 1em; /* Base font size (16px by default) */
+    --heading-font-size: 1.5em; /* 24px (1.5 * 16px) */
+    --subheading-font-size: 1.25em; /* 20px (1.25 * 16px) */
+    --small-font-size: 0.875em; /* 14px (0.875 * 16px) */
+    --font-spacing: 0.1em;
+
+    /* Colors */
+    --primary-color: #3498db;
+    --secondary-color: #2ecc71;
+    --accent-color: #e74c3c;
+    --background-color: #f5f5f5;
+    --text-color: #333;
+    --border-color: #ccc;
+    --darkBackground: #0e0e0e;
+    --Bright-text: white;
+
+    /* Padding */
+    --small-padding: 0.5em; /* 8px */
+    --medium-padding: 1em; /* 16px */
+    --medium-padding-extra: 0.8em; /* 16px */
+    --large-padding: 1.5em; /* 24px */
+
+    /* Margin */
+    --small-margin: 0.5em;
+    --medium-margin: 1em;
+    --large-margin: 1.5em;
+
+    /* Border Radius */
+    --border-radius: 0.5em; /* 8px */
+    --border-radius-medium: 0.3em; /* 8px */
+    --full-circle: 1em;
+    
+}
+
+.onTheWay{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 30em;
+    height: fit-content;
+    position: relative;
+    overflow: hidden;
+    padding-top: var(--medium-padding);
+    padding-bottom: var(--medium-padding);
+
+}
+
+
+.span{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: var(--medium-padding);
+    box-sizing: border-box;
+}
+
+.pageIndicator{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: solid 1px var(--darkBackground);
+    padding: var(--small-padding);
+    height: 2em;
+    width: 2em;
+    border-radius: var(--full-circle);
+    background-color: var(--Bright-text);
+    font-size: 0.8em;
+    position: relative;
+}
+
+.pageIndicator::after {
+    content: attr(data-label); /* Use data-label from HTML */
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 8px;
+    font-size: 12px;
+    color: var(--darkBackground);
+  }
+
+.pageHr{
+    width: 100%;
+    position: absolute;
+    z-index: -1;
+    border: solid var(--darkBackground) 0.4px;
+}
+
+.cartConfig{
+    display: flex;
+    /* flex-direction: column; */
+    justify-content: space-evenly;
+    width: 99vw;
+    height: fit-content;
+    /* background-color: var(--secondary-color); */
+    padding: var(--large-padding);
+    box-sizing: border-box;
+}
+
+.productChecks{
+    display: flex;
+    /* justify-content: space-between; */
+    flex-direction: column;
+
+    width: 45em;
+    /* background-color: green; */
+    padding: var(--small-padding);
+    box-sizing: border-box;
+}
+.leftCheck{
+    height: fit-content;
+    padding: var(--medium-padding);
+    display: flex;
+    width: 100%;
+    box-sizing: border-box;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.coupons{
+    display: flex;
+    flex-direction: column;
+    /* justify-content: flex-start; */
+    width: 30em;
+    height: fit-content;
+    /* background-color: rgb(0, 255, 0); */
+    position: relative;
+
+}
+
+
+.coupons h2{
+    padding: 0px 0px 0px 0.5em;
+    /* margin: 0; */
+}
+.product{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    /* background-color: red; */
+    border: solid 1px var(--darkBackground);
+    border-radius: var(--border-radius);
+    padding: var(--medium-padding);
+    box-sizing: border-box;
+}
+
+.cartItem{
+    display: flex;
+    height: 10em;
+    /* background-color: yellow; */
+    width: 100%;
+    padding: var(--small-padding);
+    box-sizing: border-box;
+    gap: 1em;
+    border-bottom:solid 1px var(--border-color);
+}
+
+.cartImg{
+    height: 100%;
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+} 
+
+.cartImg img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: var(--border-radius);
+}
+
+.cartImg input{
+    position: absolute;
+    top: 7px ;
+    left: 7px ;
+}
+
+.Details{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 10px;
+    height: 100%;
+    width: 75%;
+}
+
+.productName{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.productDesc{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    /* flex-wrap: nowrap; */
+    gap: 0.8em;
+}
+
+.productDesc span{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 1.5em;
+   gap: 0.5em;
+   /* background-color: green; */
+}
+
+
+.productPrice{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 1.5em;
+    width: 100%;
+    margin-top: 1em;
+}
+
+.productPrice div{
+    width: 5em;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 5px;
+    /* background-color: red; */
+}
+
+.plus{
+    padding:  var(--small-padding);
+    /* box-sizing: border-box; */
+    background-color: var(--border-color);
+    font-size: 0.7em;
+    border-radius: var(--border-radius  );
+}
+
+
+.gifting{
+    display: flex;
+    justify-content: space-between;
+    /* align-items: center; */
+    /* flex-direction: column; */
+    padding: 1em;
+    box-sizing: border-box;
+    width: 100%;
+    height: fit-content;
+    /* margin-top: 10%; */
+    background-color: red;
+    background-color: var(--background-color);
+    border-radius: var(--border-radius);
+}
+
+.giftTab{
+    display: flex;
+    /* justify-content: space-between; */
+    align-items: flex-start;
+    width: fit-content;
+    height: 100%;
+    padding: var(--small-padding);
+    box-sizing: border-box;
+    flex-direction: column;
+    gap: 0.5em;
+}
+
+.giftTab button{
+    background: none;
+    padding: 0.5em;
+    color: var(--primary-color);
+    font-size: var(--small-font-size);
+    font-weight: 600;
+    border: none;
+
+}
+
+.giftTab h2{
+    padding: 0px 0px 0px 1em;
+    margin: 0;
+    
+}
+
+.PriceList{
+    display: flex;
+    /* align-items: center; */
+    flex-direction: column;
+    padding: var(--small-padding);
+    box-sizing: border-box;
+    background-color: yellow;
+    height: fit-content;
+    gap: 1em;
+    background-color: var(--background-color);
+    border-radius: var(--border-radius);
+}
+
+.itemsCount{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 2em;
+    padding: var(--small-padding);
+    box-sizing: border-box;
+}
+
+.btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: var(--small-margin);
+    height: 3em;
+    gap: 0.5em;
+    border-radius: var(--border-radius);
+    background-color: var(--darkBackground);
+    color: var(--Bright-text);
+}
+
+.giftIcon{
+    font-size: 9em;
+    position: absolute;
+    right: 0;
+    color: #0e0e0e29;
+}
+
+@media screen and (max-width: 580px) {
+    /* .onTheWay{
+        width: 100%;
+    } */
+    .productChecks{
+        width: 100%;
+        flex-direction: column;
+    }
+    .coupons{
+        width: 100%;
+    }
+    .cartConfig{
+        /* width: 100vw; */
+        padding: var(--small-padding);
+        flex-direction: column;
+    }
+    .cartItem{
+        flex-direction: column;
+        height: fit-content;
+        gap: 0.5em;
+        /* width: 100%; */
+    }
+    .cartImg{
+        width: 100%;
+        height: 10em;
+    }
+    .Details{
+        width: 100%;
+    }
+    /* .productPrice div{
+        width: 100%;
+        justify-content: center;
+    }
+     */
+
+     .leftCheck{
+        flex-direction: column;
+     }
+
+     .rightCheck{
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        padding: var(--medium-padding);
+     }
+}

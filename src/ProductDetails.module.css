@@ -1,0 +1,132 @@
+
+*{
+    font-family: 'League Spartan';
+    /* border: solid 1px blue; */
+}
+
+:root {
+    /* Font */
+    --font-family: 'League Spartan', sans-serif;
+    --font-size: 1em; /* Base font size (16px by default) */
+    --heading-font-size: 1.5em; /* 24px (1.5 * 16px) */
+    --subheading-font-size: 1.25em; /* 20px (1.25 * 16px) */
+    --small-font-size: 0.875em; /* 14px (0.875 * 16px) */
+    --font-spacing: 0.1em;
+
+    /* Colors */
+    --primary-color: #3498db;
+    --secondary-color: #2ecc71;
+    --accent-color: #e74c3c;
+    --background-color: #f5f5f5;
+    --text-color: #333;
+    --border-color: #ccc;
+    --darkBackground: #0e0e0e;
+    --Bright-text: white;
+
+    /* Padding */
+    --small-padding: 0.5em; /* 8px */
+    --medium-padding: 1em; /* 16px */
+    --medium-padding-extra: 0.8em; /* 16px */
+    --large-padding: 1.5em; /* 24px */
+
+    /* Margin */
+    --small-margin: 0.5em;
+    --medium-margin: 1em;
+    --large-margin: 1.5em;
+
+    /* Border Radius */
+    --border-radius: 0.5em; /* 8px */
+    --border-radius-medium: 0.3em; /* 8px */
+    --full-circle: 1em;
+    
+}
+
+
+.product_plaque{
+    display: flex;
+    padding: 2em;
+}
+
+.ProductCard{
+    
+    min-width: 15em;
+    min-height: 24em;
+    /* background-color: #2ecc71; */
+    padding: var(--large-padding);
+    /* border: solid 1px black; */
+    overflow-x: hidden;
+
+}
+
+.picture_top{
+    /* border-top-left-radius: 200px;
+    border-top-right-radius: 200px; */
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    /* border: solid 1px black; */
+    border-bottom: none;
+    position: relative;
+    border-radius: 10px;
+
+}
+
+.picture_top img{
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    ;
+    /* border: solid 1px  black; */
+    
+}
+
+.product_details{
+    display: flex;
+    justify-content: center;
+    /* flex-direction: column; */
+    width: 100%;
+    box-sizing: border-box;
+    padding: var(--small-padding);
+    /* gap: 10px; */
+    margin-top: var(--small-margin);
+
+}
+
+
+.product_description{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: yellow; */
+    text-align: center;
+    
+}
+.describe_text{
+    font-family: "League Spartan", sans-serif;
+    font-weight: 300;
+    letter-spacing: 1px;
+    font-size: 20px;
+    color: var(--darkBackground);
+    
+}
+
+.price{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3em;
+    font-weight: 600;
+}
+
+.tag{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: solid 1px;
+    min-width: 4.6em;
+    min-height: 2.8em;
+    border-radius: var(--border-radius-medium);
+    background-color: var(--darkBackground);
+    color: var(--Bright-text);
+}
+
