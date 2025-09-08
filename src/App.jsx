@@ -7,12 +7,42 @@ import { motion } from "framer-motion";
 
 export default function App(){
   // toast.success("Item added to cart!");
+  const Data = [
+  {
+    brand: "public/Relentless_Global_Logo_White-removebg-preview.png",
+    text: "Global"
+  },
+  {
+    brand: "public/_Relentless_Baby_Logo-removebg-preview.png",
+    text: "Baby"
+  },
+  {
+    brand: "public/Relentless_Home-removebg-preview.png",
+    text: "Home"
+  },
+  {
+    brand: "public/Relentless_Marketing_Hub_Logo_White-removebg-preview.png",
+    text: "Marketing"
+  },
+  {
+    brand: "public/Relentless_Ministries_Logo-removebg-preview.png",
+    text: "Ministries"
+  }
+];
+
 
   return(
     <>
    
     <div className="tags">
       <div className="all">All</div>
+      {Data.map((item)=> (
+
+        <Brands brand={item}/>
+      ))
+
+      }
+      {/* <Brands/>
       <Brands/>
       <Brands/>
       <Brands/>
@@ -24,6 +54,7 @@ export default function App(){
       <Brands/>
       <Brands/>
       <Brands/>
+      <Brands/> */}
     </div>
 
     <div className="Products-Item-slider">
