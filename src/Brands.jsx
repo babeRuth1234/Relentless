@@ -7,6 +7,7 @@ export default function Brands(props) {
         whileHover={{ scale: 1.1, backgroundColor: "#0e0e0e", color: "white" }}
         whileTap={{ scale: 0.9 }}
         className="tag"
+        title={props.brand.title}
       >
         <img
           src={props.brand.brand}

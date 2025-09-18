@@ -8,7 +8,7 @@ export default function Details_bar({toggle}){
           whileHover={{ scale: 1.1 }}  // Enlarge on hover
           whileTap={{ scale: 0.8 }}   // Shrink on click
         >
-          <HiBars3BottomLeft style={{cursor:'pointer'}} size={"3em"} onClick={toggle} />
+          <HiBars3BottomLeft style={{cursor:'pointer'}} size={"2.6em"} onClick={toggle} />
         </motion.div>
         <h1 style={{letterSpacing:"-0.1em"}}>-Relentless-</h1>
         <motion.div 

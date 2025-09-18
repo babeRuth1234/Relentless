@@ -230,7 +230,7 @@ body{
 
 .product-description{
     display: flex;
-    justify-content: center;
+    /* justify-content: center; */
     align-items: center;
     /* background-color: yellow; */
     text-align: center;
@@ -240,7 +240,7 @@ body{
 
 .price{
     display: flex;
-    justify-content: center;
+    /* justify-content: center; */
     align-items: center;
     gap: 3em;
     font-weight: 600;

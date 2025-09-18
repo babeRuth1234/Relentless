@@ -4,29 +4,35 @@ import MainProductCard from "./MainProductCard";
 import { FaArrowRight } from "react-icons/fa6";
 import data from "./data";
 import { motion } from "framer-motion";
+import { title } from "framer-motion/client";
 
 export default function App(){
   // toast.success("Item added to cart!");
   const Data = [
   {
     brand: "public/Relentless_Global_Logo_White-removebg-preview.png",
-    text: "Global"
+    text: "Global",
+    title: "Relentless Global"
   },
   {
     brand: "public/_Relentless_Baby_Logo-removebg-preview.png",
-    text: "Baby"
+    text: "Baby",
+    title: "Relentless Baby"
   },
   {
     brand: "public/Relentless_Home-removebg-preview.png",
-    text: "Home"
+    text: "Home",
+    title: "Relentless Home"
   },
   {
     brand: "public/Relentless_Marketing_Hub_Logo_White-removebg-preview.png",
-    text: "Marketing"
+    text: "Marketing",
+    title: "Relentless Marketing"
   },
   {
     brand: "public/Relentless_Ministries_Logo-removebg-preview.png",
-    text: "Ministries"
+    text: "Ministries",
+    title: "Relentless Ministries"
   }
 ];
 
