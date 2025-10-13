@@ -1,0 +1,20 @@
+.colourBlock {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 3px solid transparent;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.colourBlock:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.colourBlock.selected {
+    border-color: var(--foreground);
+    transform: scale(1.15);
+    box-shadow: 0 0 0 2px var(--background), 0 0 0 4px var(--foreground);
+}

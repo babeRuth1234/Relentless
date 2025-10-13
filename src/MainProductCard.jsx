@@ -1,11 +1,31 @@
 import { TbShoppingBagPlus } from "react-icons/tb";
 import { FaArrowRight } from "react-icons/fa6";
+import { useNavigate } from "react-router-dom";
+
 export default function MainProductCard({item}){
+     const navigation = useNavigate();
+
+    const handleClick = () => {
+        navigation("/ProductDetails", {state: { item }});
+    };
+    const rawSize = item?.details?.size;
+
+    const sizes = rawSize
+        ? Array.isArray(rawSize)
+        ? rawSize.flatMap((s) => s.split(",").map((str) => str.trim()))
+        : rawSize.split(",").map((s) => s.trim())
+        : [""];
+
+    // ✅ Get only the first size safely
+    const firstSize = sizes[0] || "";
+
     console.log(item)
     return(
-        <div className="main-product-Card">
+        <div
+        onClick={handleClick}        
+        className="main-product-Card">
             <div className="product-image">
-                <img src={item.image} alt="" />
+                <img src={item.images[0]} alt="" />
                 <TbShoppingBagPlus fill="" className="bag main-bag"/>
                 <div className="price-badge">
                     <div className="main-price">
@@ -22,7 +42,7 @@ export default function MainProductCard({item}){
                     <h2  style={{margin: 0, padding: 0}}>{item.name}</h2>
                     <span>{item.description.length > 100 ? item.description.slice(0,80) + '...' : item.description}</span>
                 </div>
-                <h3 style={{textDecoration: "underline"}}>{item.size}</h3>
+                <h3 style={{textDecoration: "underline"}}>{firstSize}</h3>
             </div>
         </div>
     )

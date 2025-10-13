@@ -5,49 +5,47 @@ import { FaArrowRight } from "react-icons/fa6";
 import data from "./data";
 import { motion } from "framer-motion";
 import { title } from "framer-motion/client";
-
+import API from './axios'
+import { useState, useEffect } from "react";
+import PageSkeleton from "./skeletons/PageSkeleton";
 export default function App(){
+   const [brands, setBrands] = useState([]);       // holds brand data
+  const [products, setProducts] = useState([]);   // holds product data
+  const [mainProducts, setMainProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
   // toast.success("Item added to cart!");
-  const Data = [
-  {
-    brand: "public/Relentless_Global_Logo_White-removebg-preview.png",
-    text: "Global",
-    title: "Relentless Global"
-  },
-  {
-    brand: "public/_Relentless_Baby_Logo-removebg-preview.png",
-    text: "Baby",
-    title: "Relentless Baby"
-  },
-  {
-    brand: "public/Relentless_Home-removebg-preview.png",
-    text: "Home",
-    title: "Relentless Home"
-  },
-  {
-    brand: "public/Relentless_Marketing_Hub_Logo_White-removebg-preview.png",
-    text: "Marketing",
-    title: "Relentless Marketing"
-  },
-  {
-    brand: "public/Relentless_Ministries_Logo-removebg-preview.png",
-    text: "Ministries",
-    title: "Relentless Ministries"
-  }
-];
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const [brandRes, productRes, mainRes] = await Promise.all([
+          API.get("/brands"),        // ✅ your backend route for all brands
+          API.get("/products"),      // ✅ your backend route for all products
+          API.get("/main-products")
+        ]);
+        console.log(brandRes.data);
+        console.log(productRes.data);
 
+        setBrands(brandRes.data);
+        setProducts(productRes.data);
+        setMainProducts(mainRes.data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
 
+    fetchData();
+  }, []);
+   if (loading) return <PageSkeleton/>;
   return(
     <>
    
     <div className="tags">
       <div className="all">All</div>
-      {Data.map((item)=> (
-
-        <Brands brand={item}/>
-      ))
-
-      }
+      {brands.map((brand) => (
+          <Brands key={brand._id} brand={brand} />
+        ))}
       {/* <Brands/>
       <Brands/>
       <Brands/>
@@ -64,23 +62,17 @@ export default function App(){
     </div>
 
     <div className="Products-Item-slider">
-      {data.map((item, index)=>(
-        <motion.div 
-        
-        key={index} // Always add key when mapping
-        whileHover={{ scale: 1.01 }} // Enlarge on hover
-        whileTap={{ scale: 0.9 }} // Shrink on click
-        transition={{ duration: 0.2 }} // Smoothens the transition
-        >
-
-          <ProductCard item={item} index={index} />
-
-        </motion.div>
-      ))
-
-      }
- 
-    </div>
+        {products.map((item, index) => (
+          <motion.div
+            key={item._id || index}
+            whileHover={{ scale: 1.01 }}
+            whileTap={{ scale: 0.9 }}
+            transition={{ duration: 0.2 }}
+          >
+            <ProductCard item={item} index={index} />
+          </motion.div>
+        ))}
+      </div>
     <div className="seemore" >
       New In Town
 
@@ -88,15 +80,11 @@ export default function App(){
       <hr />
     </div>
     <div className="main-products">
-
-      
-        {data.map((item, index)=>(
-          
-          <MainProductCard item={item} index={index}/>
-
-        ))
-      }
+      {loading ? <ProductCardSkeleton/>: mainProducts.map((item, index) => (
+        <MainProductCard key={item._id || index} item={item} index={index} />
+      ))}
     </div>
+
     </>
 
   )

@@ -16,9 +16,9 @@ export default function Footer(){
                 </div>
               
                 <div className="legs">
-                    <FaInstagram className="linkies" size={'1.4em'}/>
-                    <FaFacebookF className="linkies" size={'1.4em'}/>
-                    <BsTwitterX className="linkies" size={'1.4em'}/>
+                    <FaInstagram style={{boxSizing: 'content-box'}} className="linkies" size={'1.4em'}/>
+                    <FaFacebookF style={{boxSizing: 'content-box'}} className="linkies" size={'1.4em'}/>
+                    <BsTwitterX style={{boxSizing: 'content-box'}} className="linkies" size={'1.4em'}/>
                 </div>
             </div>
         </>

@@ -1,0 +1,134 @@
+.main-product-skeleton {
+  display: flex;
+  flex-direction: column;
+  min-width: 13em;
+  max-width: 23em;
+  min-height: 25em;
+  border: solid 1px #e0e0e0;
+  border-radius: var(--border-radius);
+  padding: var(--medium-padding);
+  gap: 10px;
+  box-sizing: border-box;
+}
+
+.main-skeleton-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  height: 70%;
+  position: relative;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+}
+
+.main-skeleton-img {
+  width: 100%;
+  height: 100%;
+  background-color: #f0f0f0;
+  border-radius: var(--border-radius);
+}
+
+.main-skeleton-bag {
+  position: absolute;
+  top: var(--small-margin);
+  right: var(--small-margin);
+  width: 2em;
+  height: 2em;
+  border-radius: var(--border-radius);
+  background-color: #e0e0e0;
+}
+
+.main-skeleton-badge {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  position: absolute;
+  bottom: var(--small-margin);
+  padding: 0 var(--small-padding);
+  box-sizing: border-box;
+}
+
+.main-skeleton-buy-now {
+  width: 10em;
+  height: 2.5em;
+  border-radius: var(--full-circle);
+  background-color: rgba(224, 224, 224, 0.8);
+}
+
+.main-skeleton-price-circle {
+  width: 4em;
+  height: 2.5em;
+  border-radius: var(--full-circle);
+  background-color: rgba(224, 224, 224, 0.9);
+}
+
+.main-skeleton-description {
+  display: flex;
+  justify-content: space-between;
+  background-color: rgba(128, 128, 128, 0.05);
+  border-radius: var(--border-radius);
+  padding: var(--medium-padding);
+  align-items: center;
+  height: 26%;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.main-skeleton-text-block {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 70%;
+}
+
+.main-skeleton-title {
+  width: 90%;
+  height: 1.2em;
+  border-radius: 4px;
+  background-color: #f0f0f0;
+}
+
+.main-skeleton-subtitle {
+  width: 100%;
+  height: 0.8em;
+  border-radius: 4px;
+  background-color: #f0f0f0;
+}
+
+.main-skeleton-subtitle-short {
+  width: 70%;
+  height: 0.8em;
+  border-radius: 4px;
+  background-color: #f0f0f0;
+}
+
+.main-skeleton-size {
+  width: 3em;
+  height: 1.5em;
+  border-radius: 4px;
+  background-color: #f0f0f0;
+}
+
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    #f0f0f0 0%,
+    #e0e0e0 20%,
+    #f0f0f0 40%,
+    #f0f0f0 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}

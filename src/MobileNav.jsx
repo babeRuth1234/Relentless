@@ -9,6 +9,7 @@ export default function MobileNav({ setSearchQuery, toggle }) {
       <Details_bar toggle={toggle} />
       <div className="search_bar">
         <input
+          style={{boxSizing:'content-box'}}
           type="text"
           placeholder="Find Some shoes"
           onChange={(e) => setSearchQuery(e.target.value)} // Update state on input change
@@ -18,7 +19,7 @@ export default function MobileNav({ setSearchQuery, toggle }) {
             whileTap={{ scale: 0.9 }} // Shrink on click
         >
 
-          <BsSearch className="search-btn" />
+          <BsSearch  style={{boxSizing:'content-box'}} className="search-btn" />
         </motion.div>
       </div>
     </>

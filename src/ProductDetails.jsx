@@ -1,109 +1,151 @@
-import Details_bar from "./Detail-bar"
-import Styles from '../src/ProductDetails.module.css'
-import Sizes from "./Sizes"
-import { color } from "framer-motion"
-import { useLocation } from "react-router-dom"
-import { FaPlay } from "react-icons/fa";
-import { FaPause } from "react-icons/fa";
-import data from "./data";
+import { useState } from "react";
+import { useLocation, Link } from "react-router-dom";
+import { FaPlay, FaPause } from "react-icons/fa";
 import { motion } from "framer-motion";
+import Styles from './ProductDetails.module.css';
+import Sizes from './Sizes'
+import ColourBlock from "./colour";
 import ProductCard from "./ProductCard";
-import { useState } from "react"
-import ColourBlock from "./colour"
-import { Link } from "react-router-dom"
 
-export default function ProductDetails(){
+export default function ProductDetails() {
     const [isHovered, setIsHovered] = useState(false);
-      
+    const [selectedImage, setSelectedImage] = useState(0);
     
-
-
-    let location = useLocation()
+    const location = useLocation();
     const { item } = location.state || {};
-    const sizes = ["XS", "S", "M", "L", "XL", "XXL", "XX", "L","XL"]
-    const colours = ["#e53245", "#d7c3b0", "#ede8dd", "#101a1b", "#ff5333", "#ff5333", "#bd9d93" ]
-    const playVideo = (e)=>{
+
+    // Extract sizes - convert to array if string, or use default
+   const rawSize = item?.details?.size;
+
+const sizes = rawSize 
+  ? Array.isArray(rawSize)
+    ? rawSize.flatMap(s => s.split(',').map(str => str.trim()))
+    : rawSize.split(',').map(s => s.trim())
+  : ["One Size"];
+
+
+    // Extract colors from item or use defaults
+    const colours = item?.details?.colors 
+        ? (Array.isArray(item.details.colors) ? item.details.colors : item.details.colors.split(',').map(c => c.trim()))
+        : "";
+
+    const playVideo = (e) => {
         e.stopPropagation();
-        setIsHovered(prev=> !prev)
+        setIsHovered(prev => !prev);
+    };
+
+    if (!item) {
+        return (
+            <div className={Styles.errorContainer}>
+                <h2>Product not found</h2>
+                <Link to="/" className={Styles.backLink}>Go back to home</Link>
+            </div>
+        );
     }
-    return(
-        <>
-            {/* <Details_bar /> */}
+    // console.log()
+
+    return (
+        <div className={Styles.pageContainer}>
             <div className={Styles.ProductCard}>
-                       <div className={Styles.picture_top}  style={{backgroundColor: "transparent"}}>
-                           {/* <img src={item.image}alt="" /> */}
-                           <div className="picture-top" style={{ backgroundColor: "none" }}>
-                {isHovered ? (
-                    <video src={item.video} autoPlay loop muted className="product-video" />
-                ) : (
-                    <img src={item.image} alt={item.name} className="product-image" style={{background: "none"}} />
-                    
-                )}
-                <div className="playSound">
-                    {
-                        isHovered ? (
-                            <FaPause className="" onClick={playVideo} />
+                <div className={Styles.picture_top}>
+                    <div className={Styles.mainImageContainer}>
+                        {item?.images?.length > 0 ? (
+                            isHovered && item?.video ? (
+                                <video
+                                    src={item.video}
+                                    autoPlay
+                                    loop
+                                    muted
+                                    className={Styles.productVideo}
+                                />
+                            ) : (
+                                <img
+                                    src={item.images[selectedImage] || item.images[0]}
+                                    alt={item.name || "Product image"}
+                                    className={Styles.productImage}
+                                />
+                            )
                         ) : (
-                            <FaPlay className="" onClick={playVideo} />
-                        )
-                    }
+                            <p>No media available</p>
+                        )}
+
+                        {item?.video && (
+                            <div className={Styles.playSound} onClick={playVideo}>
+                                {isHovered ? <FaPause /> : <FaPlay />}
+                            </div>
+                        )}
+                    </div>
+
+                    {/* Image Gallery Thumbnails */}
+                    {item?.images?.length > 1 && (
+                        <div className={Styles.imageGallery}>
+                            {item.images.map((image, index) => (
+                                <div
+                                    key={index}
+                                    className={`${Styles.thumbnail} ${selectedImage === index ? Styles.activeThumbnail : ''}`}
+                                    onClick={() => setSelectedImage(index)}
+                                >
+                                    <img src={image} alt={`${item.name} view ${index + 1}`} />
+                                </div>
+                            ))}
+                        </div>
+                    )}
                 </div>
-                {/* <FaPause   className="playSound"/> */}
+
+                <div className={Styles.product_details}>
+                    <div className={Styles.product_name}>{item.name}</div>
+                    <div className={Styles.price}>
+                        <p>${item.price}</p>
+                        <span className={Styles.rating}>(4.5)</span>
+                    </div>
+                    <div className={Styles.stock}>
+                        {item.stock > 0 ? `${item.stock} in stock` : 'Out of stock'}
+                    </div>
+                     <motion.div className={Styles.tags}>
+                    {item.category === "Fashion" ? sizes.map((size, index) => (
+                        <Sizes key={index} size={size} />
+                    )) : ""}
+                </motion.div>
+                <motion.div className={Styles.colour_list}>
+                    {  colours ?  colours.map((color, index) => (
+                        <ColourBlock key={index} color={color} />
+                    )) : ""}
+                </motion.div>
+                 <motion.div className={`${Styles.checkoutButton} ${Styles.mobileCheckout}`}>
+                    <Link to='/Cart' className={Styles.checkoutLink}>
+                        Add to Cart 
+                        {/* ${item.price} */}
+                    </Link>
+                </motion.div>
+                <div className={Styles.productDetailsSection}>
+                    <h3 className={Styles.describeTitle}>Product Details</h3>
+                    <p className={Styles.describe_text}>{item.description}</p>
+                    
+                    {item.details && (
+                        <div className={Styles.specifications}>
+                            {item.details.weight && <p><strong>Weight:</strong> {item.details.weight} lbs</p>}
+                            {item.details.height && <p><strong>Height:</strong> {item.details.height} inches</p>}
+                            {item.details.width && <p><strong>Width:</strong> {item.details.width} inches</p>}
+                            {item.details.power && <p><strong>Power:</strong> {item.details.power}W</p>}
+                        </div>
+                    )}
+
+                    {item.category && <p className={Styles.category}><strong>Category:</strong> {item.category}</p>}
+                    {item.brand && <p className={Styles.brand}><strong>Brand:</strong> {item.brand.name || item.brand}</p>}
+                    {item.brand && <p className={Styles.brand}><strong>Gender:</strong> {item.details.gender}</p>}
+                    {item.brand && <p className={Styles.brand}><strong>Season:</strong> {item.details.season}</p>}
+                    {/* {item.brand && <p className={Styles.brand}><strong>Brand:</strong> {item.brand}</p>} */}
+                    
+                </div>
+                <motion.div className={`${Styles.checkoutButton} ${Styles.desktopCheckout}`}>
+                    <Link to='/Cart' className={Styles.checkoutLink}>
+                        Add to Cart ${item.price}
+                    </Link>
+                </motion.div>
+                </div>
+
+             
             </div>
-                       </div>
-                       <div className={Styles.product_details} >
-                           <div className={Styles.product_description} style={{fontSize: "1.2em"}} >A pair of nikes for the kids of wikies</div>
-                           <div className={Styles.price}>
-                               {/* <p>${item.price}</p> */}
-                               
-                               {/* <TbShoppingBagPlus fill="" className="bag"/> */}
-                               (4.5)
-                           </div>
-                       </div>
-                        <motion.div className="tags" style={{alignItems: "left", paddingLeft: 0}}>
-                            {
-                                sizes.map((size, index) => (
-                                    <Sizes key={index} size={size}/>
-                                ))
-                            }
-                        
-                        </motion.div>
-                        <motion.div className=" colour_list" >
-                           
-                            {
-                                colours.map((Color, index)=>(
-
-                                    <ColourBlock key={index} Color={Color}/>
-                                ))
-                            }
-                        
-                        </motion.div>
-                        <motion.div style={{ width: "100%",textDecoration: 'none',cursor:'pointer', minHeight: '3em', marginTop: '1em' }} to={'/Register'} className="sign-up">
-                            <Link style={{color:"white", textDecoration: "none", height: '100%', width: '100%', display: 'flex ', justifyContent:'center', alignItems: 'center'}} to={'/Cart'}>Checkout ${item.price}</Link>
-                        </motion.div>
-
-                        <h3 className={Styles.describe_text}>
-                                {item.description}
-                        </h3>
-
-            </div>
-            <div className="Products-Item-slider " >
-                    {data.map((item, index)=>(
-                        <motion.div 
-                        
-                        key={index} // Always add key when mapping
-                        whileHover={{ scale: 1.01 }} // Enlarge on hover
-                        whileTap={{ scale: 0.9 }} // Shrink on click
-                        transition={{ duration: 0.2 }} // Smoothens the transition
-                        >
-
-                        <ProductCard item={item} index={index} />
-
-                        </motion.div>
-                    ))}
-            </div>
-
-            
-        </>
-    )
+        </div>
+    );
 }

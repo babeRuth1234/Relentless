@@ -36,35 +36,51 @@ export default function ProductCard({ item }) {
 
                 // Show toast message
                 if (newState) {
-                    toast.success(`${item.name} added to favourites! ❤️`,{
-                        style: {
-                          background: "#0e0e0e",
-                          color: "white",
-                          borderRadius: "10px",
-                          fontWeight: "bold",
-                          fontFamily:  'League Spartan',
-                          padding: "12px 16px",
-                        },
-                        icon: <FaHeartCirclePlus/>,
-                      });
-                } else {
-                    toast.info(`${item.name} removed from favourites`,{
-                        style: {
-                          background: "#0e0e0e",
-                          color: "white",
-                          borderRadius: "10px",
-                          fontWeight: "bold",
-                          fontFamily:  'League Spartan',
-                          padding: "12px 16px",
-                        },
-                        icon: <FaHeartCircleMinus/>,
+                            toast.success(`${item.name} added to favourites!`, {
+                                style: {
+                                    background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+                                    color: "white",
+                                    borderRadius: "16px",
+                                    fontWeight: "600",
+                                    fontFamily: 'League Spartan',
+                                    padding: "16px 20px",
+                                    boxShadow: "0 8px 32px rgba(102, 126, 234, 0.35), 0 4px 16px rgba(0, 0, 0, 0.15)",
+                                    border: "1px solid rgba(255, 255, 255, 0.18)",
+                                    backdropFilter: "blur(10px)",
+                                    fontSize: "15px",
+                                    letterSpacing: "0.3px",
+                                },
+                                icon: <FaHeartCirclePlus style={{ fontSize: "22px" }} />,
+                                progressStyle: {
+                                    background: "rgba(255, 255, 255, 0.3)",
+                                }
+                            });
+                        } else {
+                            toast.info(`${item.name} removed from favourites`, {
+                                style: {
+                                    background: "linear-gradient(135deg, #434343 0%, #000000 100%)",
+                                    color: "white",
+                                    borderRadius: "16px",
+                                    fontWeight: "600",
+                                    fontFamily: 'League Spartan',
+                                    padding: "16px 20px",
+                                    boxShadow: "0 8px 32px rgba(0, 0, 0, 0.5), 0 4px 16px rgba(0, 0, 0, 0.25)",
+                                    border: "1px solid rgba(255, 255, 255, 0.12)",
+                                    backdropFilter: "blur(10px)",
+                                    fontSize: "15px",
+                                    letterSpacing: "0.3px",
+                                },
+                                icon: <FaHeartCircleMinus style={{ fontSize: "22px" }} />,
+                                progressStyle: {
+                                    background: "rgba(255, 255, 255, 0.25)",
+                                }
+                            });
+                        }
 
-                      });
-                }
-
-                return newState;
-                });
-                }} style={{cursor: "pointer"}}>
+                        return newState;
+                    });
+                }}
+            >
                 {favourite ? <FaHeartCircleMinus className="favourite"/> :  <FaHeartCirclePlus className="favourite"/>}   
 
         </div>
@@ -72,7 +88,7 @@ export default function ProductCard({ item }) {
             
             <div className="picture-top" style={{ backgroundColor: "none" }}>   
 
-                <img src={item.image} alt={item.name} className="product-image" style={{background: "none"}} />
+                <img src={item?.images?.[0]} alt={item.name} className="product-image" style={{background: "none"}} />
             </div>
 
             <div className="product-details">

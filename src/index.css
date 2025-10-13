@@ -3,6 +3,7 @@
     /* border: solid 1px blue; */
 }
 
+
 :root {
     /* Font */
     --font-family: 'League Spartan', sans-serif;
@@ -39,6 +40,8 @@
     --full-circle: 1em;
     
 }
+
+
 
 
 .Mobile_Nav{
@@ -289,7 +292,7 @@ body{
     width: 100%;
     height: 70%;
     position: relative;
-    background-color: red;
+    /* background-color: red; */
     border-radius: var(--border-radius);
     overflow: hidden;
 }

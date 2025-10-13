@@ -1,0 +1,52 @@
+.brand-skeleton-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.brand-skeleton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: solid 1px #e0e0e0;
+  min-width: 4.6em;
+  min-height: 2.8em;
+  border-radius: var(--border-radius-medium);
+  background-color: #f0f0f0;
+}
+
+.brand-skeleton-circle {
+  width: 2em;
+  height: 2em;
+  border-radius: 50%;
+  background-color: #e0e0e0;
+}
+
+.brand-skeleton-text {
+  width: 3em;
+  height: 0.8em;
+  border-radius: 4px;
+  background-color: #f0f0f0;
+}
+
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    #f0f0f0 0%,
+    #e0e0e0 20%,
+    #f0f0f0 40%,
+    #f0f0f0 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}

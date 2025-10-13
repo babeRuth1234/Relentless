@@ -1,0 +1,97 @@
+.product-card-skeleton {
+  min-width: 15em;
+  min-height: 24em;
+  max-width: 15em;
+  max-height: 24em;
+  padding: var(--small-padding);
+  position: relative;
+}
+
+.skeleton-favourite {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  width: 1.6em;
+  height: 1.6em;
+  border-radius: 50%;
+  background-color: #e0e0e0;
+  z-index: 8;
+}
+
+.skeleton-image {
+  width: 100%;
+  height: 18em;
+  border-radius: var(--border-radius-medium);
+  background-color: #f0f0f0;
+}
+
+.skeleton-details {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: var(--small-padding);
+  gap: 10px;
+  margin-top: var(--small-margin);
+  box-sizing: border-box;
+}
+
+.skeleton-title {
+  width: 80%;
+  height: 1em;
+  border-radius: 4px;
+  background-color: #f0f0f0;
+}
+
+.skeleton-stars {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.skeleton-star {
+  width: 1em;
+  height: 1em;
+  border-radius: 2px;
+  background-color: #f0f0f0;
+}
+
+.skeleton-price-row {
+  display: flex;
+  align-items: center;
+  gap: 3em;
+}
+
+.skeleton-price {
+  width: 3em;
+  height: 1.2em;
+  border-radius: 4px;
+  background-color: #f0f0f0;
+}
+
+.skeleton-bag {
+  width: 2em;
+  height: 2em;
+  border-radius: var(--border-radius);
+  background-color: #f0f0f0;
+}
+
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    #f0f0f0 0%,
+    #e0e0e0 20%,
+    #f0f0f0 40%,
+    #f0f0f0 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
