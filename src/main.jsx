@@ -12,7 +12,7 @@ import Drawer from "./Drawer.jsx";
 import { ToastContainer, toast } from 'react-toastify';
 import Footer from "./footer.jsx";
 import Login from "./Login.jsx";
-import Cart from "./cart.jsx";
+import Cart from "./Cart.jsx";
 import Account from "./Account.jsx";
 
 function Main() {
