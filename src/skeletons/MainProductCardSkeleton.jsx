@@ -1,4 +1,4 @@
-import './skellyStyles/mainProductCardSkeleton.css';
+import './skellyStyles/MainProductCardSkeleton.css';
 
 export default function MainProductCardSkeleton() {
   return (
