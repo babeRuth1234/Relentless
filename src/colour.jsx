@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Styles from './ColourBlock.module.css';
+import Styles from './Colourblock.module.css';
 export default function ColourBlock({ color }) {
   const [selected, setSelected] = useState(false);
 
